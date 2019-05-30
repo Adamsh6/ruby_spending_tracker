@@ -76,6 +76,13 @@ class Transaction
     result = SqlRunner.run(sql)
   end
 
+  def self.total_transaction_amount
+    all_transactions = self.all
+    total_spent = 0.0
+    all_transactions.each{|transaction| total_spent += transaction.amount}
+    return total_spent
+  end
+
   def self.map_items(data)
     result = data.map { |data| Transaction.new( data ) }
     return result
