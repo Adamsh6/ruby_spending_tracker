@@ -40,6 +40,28 @@ class Budget
     return result.map{ |details| Transaction.new(details)}
   end
 
+  def spent_this_month
+    transactions_made = transactions
+    total_spent = 0.0
+    transactions_made.each{|transaction| total_spent += transaction.amount}
+    return total_spent
+  end
+
+  def almost_over?
+    total_spent = spent_this_month
+    budget_left = @amount - total_spent
+    limit = @amount * 0.9
+    return true if (@amount - budget_left) > limit
+    return false
+  end
+
+  def go_over?(amount)
+    total_spent = spent_this_month
+    return false if total_spent > @amount
+    return true if (total_spent + amount) > @amount
+    return false
+  end
+
   def self.find(id)
     sql = 'SELECT * FROM budgets WHERE id = $1'
     values = [id]
