@@ -33,6 +33,13 @@ class Budget
     SqlRunner.run(sql, values)
   end
 
+  def transactions
+    sql = "SELECT * FROM transactions WHERE budget_id = $1"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.map{ |details| Transaction.new(details)}
+  end
+
   def self.find(id)
     sql = 'SELECT * FROM budgets WHERE id = $1'
     values = [id]

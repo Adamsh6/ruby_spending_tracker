@@ -30,5 +30,5 @@ tag1.save
 
 transaction1.save
 
-
+binding.pry
 nil
