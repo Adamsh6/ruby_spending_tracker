@@ -1,1 +1,9 @@
-<h2>Here is where the transactions will go</h2>
+<div class="transaction--container">
+  <% for transaction in @transactions %>
+  <div class="transaction--box">
+    <p><%= transaction.time_stamp %></p>
+    <p><%= transaction.merchant.name %> : <%= transaction.tag.name %></p>
+    <p><%= transaction.amount %></p>
+  </div>
+  <% end %>
+</div>

@@ -8,6 +8,6 @@ require_relative('../models/budget')
 also_reload( '../models/*' )
 
 get '/transactions' do
-  @transactions = Transaction.find_all
+  @transactions = Transaction.all
   erb(:'transactions/index')
 end
