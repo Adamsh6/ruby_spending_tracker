@@ -9,11 +9,11 @@ class Transaction
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @amount = options['amount'] 
-@time_stamp = options['time_stamp'] 
-@merchant_id = options['merchant_id'] 
-@budgets_id = options['budgets_id'] 
-@tags_id = options['tags_id'] 
+    @amount = options['amount'].to_f
+@time_stamp = options['time_stamp']
+@merchant_id = options['merchant_id'].to_i
+@budgets_id = options['budgets_id'].to_i
+@tags_id = options['tags_id'].to_i
 
   end
 
