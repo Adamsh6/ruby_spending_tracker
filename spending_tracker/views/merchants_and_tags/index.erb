@@ -1,1 +1,18 @@
-<h2>Here is where the merchants and tags will go</h2>
+<h2>Merchants</h2>
+<div class="merchants--container">
+  <% for merchant in @merchants %>
+  <div class="merchants--box">
+    <p><%= merchant.name %></p>
+  </div>
+  <% end %>
+</div>
+
+<h2>Tags</h2>
+<div class="tags--container">
+  <% for tag in @tags %>
+  <div class="tags--box">
+    <p><%= tag.name %></p>
+  </div>
+  <% end %>
+
+</div>
