@@ -18,7 +18,7 @@ class Budget
     sql = 'INSERT INTO budgets (amount, start_date) VALUES ($1, $2) RETURNING id'
     values = [@amount, @start_date]
     result = SqlRunner.run(sql, values)
-    @id = result[0]['id']
+    @id = result.first["id"].to_i
   end
 
   def update
