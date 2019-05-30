@@ -1,8 +1,8 @@
 require('sinatra')
 require('sinatra/contrib/all')
-require('controllers/budget_controller')
-require('controllers/transaction_controller')
-require('controllers/merchant_and_tag_controller')
+require_relative('controllers/budget_controller')
+require_relative('controllers/transaction_controller')
+require_relative('controllers/merchant_and_tag_controller')
 
 get '/' do
   erb( :index )
