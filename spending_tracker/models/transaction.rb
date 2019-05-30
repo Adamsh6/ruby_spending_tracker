@@ -36,6 +36,27 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
+  def budget
+    sql = "SELECT * FROM budgets WHERE id = $1"
+    values=[@budget_id]
+    result = SqlRunner.run(sql, values)
+    return Budget.new(result[0])
+  end
+
+  def merchant
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values=[@merchant_id]
+    result = SqlRunner.run(sql, values)
+    return Merchant.new(result[0])
+  end
+
+  def tag
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values=[@tag_id]
+    result = SqlRunner.run(sql, values)
+    return Tag.new(result[0])
+  end
+
   def self.find(id)
     sql = 'SELECT * FROM transactions WHERE id = $1'
     values = [id]
