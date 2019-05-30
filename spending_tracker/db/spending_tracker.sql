@@ -26,4 +26,4 @@ CREATE TABLE transactions (
   merchant_id INT4 REFERENCES merchants(id),
   budgets_id INT4 REFERENCES budgets(id),
   tags_id INT4 REFERENCES tags(id)
-)
+);
