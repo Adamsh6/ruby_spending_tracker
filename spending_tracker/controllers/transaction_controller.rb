@@ -6,3 +6,7 @@ require_relative('../models/merchant')
 require_relative('../models/tag')
 require_relative('../models/budget')
 also_reload( '../models/*' )
+
+get '/transactions' do
+  erb(:'transactions/index')
+end
