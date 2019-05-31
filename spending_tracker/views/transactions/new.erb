@@ -2,7 +2,7 @@
 
 <form class="transactions--new" action="/transactions" method="post">
 <label for="amount">Amount: </label>
-<input id="amount" type="number" step="0.01" min="0.01" name="amount">
+<input id="amount" type="number" step="0.01" min="0.01" name="amount" required>
 <label for="merchants">Merchant: </label>
 <select name="merchant_id" id="merchants">
   <% for merchant in @merchants %>
@@ -17,6 +17,6 @@
 </select>
 <label for="date">Transaction Date:</label>
 
-<input type="date" id="start" name="time_stamp" min="<%= @date_6_months_ago %>" max="<%= @date_today %>">
+<input type="date" id="start" name="time_stamp" min="<%= @date_6_months_ago %>" max="<%= @date_today %>" value="<%= @date_today %>">
 <input type="submit" value="Add transaction">
 </form>
