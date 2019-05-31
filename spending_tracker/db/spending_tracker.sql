@@ -24,7 +24,7 @@ CREATE TABLE transactions (
   id SERIAL4 PRIMARY KEY,
   amount DECIMAL(9, 2),
   time_stamp DATE,
-  merchant_id INT8 REFERENCES merchants(id),
-  budget_id INT8 REFERENCES budgets(id),
-  tag_id INT8 REFERENCES tags(id)
+  merchant_id INT8 REFERENCES merchants(id) ON DELETE CASCADE,
+  budget_id INT8 REFERENCES budgets(id) ON DELETE CASCADE,
+  tag_id INT8 REFERENCES tags(id) ON DELETE CASCADE
 );
