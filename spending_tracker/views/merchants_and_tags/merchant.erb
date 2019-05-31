@@ -1,1 +1,6 @@
-<p>Edit the merchants here</p>
+<p>Edit the merchants here:</p>
+<form class="merchant--edit" action="/merchants_and_tags/merchant/<%= @merchant.id %>" method="post">
+  <label for="merchant">Merchant: </label>
+  <input type="text" id="merchant" name="name" value="<%= @merchant.name %>">
+  <input type="submit" value="Edit">
+</form>

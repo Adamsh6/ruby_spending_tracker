@@ -24,11 +24,23 @@ post '/merchants_and_tags/new_tag' do
 end
 
 get '/merchants_and_tags/tag/:id' do
-
+  @tag = Tag.find(params['id'])
   erb(:'merchants_and_tags/tag')
 end
 
 get '/merchants_and_tags/merchant/:id' do
-
+  @merchant = Merchant.find(params['id'])
   erb(:'merchants_and_tags/merchant')
+end
+
+post '/merchants_and_tags/tag/:id' do
+  @tag = Tag.new(params)
+  @tag.update
+  redirect('/merchants_and_tags')
+end
+
+post '/merchants_and_tags/merchant/:id' do
+  @merchant = Merchant.new(params)
+  @merchant.update
+  redirect('/merchants_and_tags')
 end
