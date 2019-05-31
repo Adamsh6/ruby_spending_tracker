@@ -49,6 +49,14 @@ post '/transactions/filter_tag' do
 end
 
 post '/transactions/filter_merchant' do
-  # @transactions = Transaction.filter
+  if params['merchant_id'].to_i > 0
+    @transactions = Transaction.filter_merchant(params['merchant_id'])
+  else
+    @transactions = Transaction.all
+  end
+  @transaction_total = Transaction.total_transaction_amount
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:'transactions/index')
 
 end

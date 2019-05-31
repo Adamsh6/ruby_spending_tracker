@@ -16,7 +16,7 @@
 
 <form action="/transactions/filter_tag" method="post">
   <select name="tag_id" id="tags">
-    <option value="red">All</option>
+    <option value=0>All</option>
     <% for tag in @tags %>
     <option value="<%= tag.id %>"><%= tag.name %></option>
     <% end %>
