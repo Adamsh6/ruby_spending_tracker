@@ -1,6 +1,7 @@
 require('sinatra')
 require('sinatra/contrib/all')
 require('pry')
+require('date')
 
 require_relative('../models/transaction')
 require_relative('../models/merchant')
@@ -19,6 +20,8 @@ end
 get '/transactions/new' do
   @merchants = Merchant.all
   @tags = Tag.all
+  #Should return todays date in YYYY-MM-DD Format
+  @date = Date.today.strftime('%F')
   erb(:'transactions/new')
 end
 
