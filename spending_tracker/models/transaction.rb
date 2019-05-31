@@ -65,7 +65,7 @@ class Transaction
   end
 
   def self.all
-    sql = 'SELECT amount, time_stamp, merchant_id, budget_id, tag_id FROM transactions'
+    sql = 'SELECT * FROM transactions'
     result = SqlRunner.run(sql)
     return self.map_items(result)
     # return result.map{ |item| Transaction.new(item) }

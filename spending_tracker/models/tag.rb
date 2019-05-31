@@ -47,7 +47,7 @@ class Tag
   end
 
   def self.all
-    sql = 'SELECT name FROM tags'
+    sql = 'SELECT * FROM tags'
     result = SqlRunner.run(sql)
     return self.map_items(result)
     # return result.map{ |item| Tag.new(item) }

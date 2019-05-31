@@ -1,23 +1,30 @@
 <h2>Merchants</h2>
+
 <form class="merchants--form" action="/merchants_and_tags/new_merchant" method="post">
 <label for="add-merchant">Add Merchant</label>
 <input type="text" id="add-merchant" name="name" value="Enter Merchant Here">
 <input type="submit" value="Enter">
 </form>
+
 <div class="merchants--container">
   <% for merchant in @merchants %>
   <div class="merchants--box">
     <p><%= merchant.name %></p>
+    <button type="button">
+      <a href="/merchants_and_tags/merchant/1">Edit</a>
+    </button>
   </div>
   <% end %>
 </div>
 
 <h2>Tags</h2>
+
 <form class="tags--form" action="/merchants_and_tags/new_tag" method="post">
 <label for="add-tag">Add Tag</label>
 <input type="text" id="add-tag" name="name" value="Enter Tag Here">
 <input type="submit" value="Enter">
 </form>
+
 <div class="tags--container">
   <% for tag in @tags %>
   <div class="tags--box">

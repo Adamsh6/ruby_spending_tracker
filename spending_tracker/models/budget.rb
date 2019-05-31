@@ -70,7 +70,7 @@ class Budget
   end
 
   def self.all
-    sql = 'SELECT amount, start_date FROM budgets'
+    sql = 'SELECT * FROM budgets'
     result = SqlRunner.run(sql)
     return self.map_items(result)
     # return result.map{ |item| Budget.new(item) }
