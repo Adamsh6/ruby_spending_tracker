@@ -20,8 +20,10 @@ end
 get '/transactions/new' do
   @merchants = Merchant.all
   @tags = Tag.all
+  date = Date.today
   #Should return todays date in YYYY-MM-DD Format
-  @date = Date.today.strftime('%F')
+  @date_today = date.strftime('%F')
+  @date_6_months_ago = date.prev_month(6).strftime('%F')
   erb(:'transactions/new')
 end
 
