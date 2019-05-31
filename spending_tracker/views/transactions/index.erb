@@ -1,4 +1,29 @@
 <h2>Total Spent <%= @transaction_total %></h2>
+
+<form class="sort" action="/transactions/sort" method="get">
+  <input type="submit" value="Sort by date">
+</form>
+
+<form action="/transactions/filter_merchant" method="post">
+  <select name="merchant_id" id="merchants">
+    <option value=0>All</option>
+    <% for merchant in @merchants %>
+    <option value="<%= merchant.id %>"><%= merchant.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Filter by merchant">
+</form>
+
+<form action="/transactions/filter_tag" method="post">
+  <select name="tag_id" id="tags">
+    <option value="red">All</option>
+    <% for tag in @tags %>
+    <option value="<%= tag.id %>"><%= tag.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Filter by tag">
+</form>
+
 <div class="transaction--container">
   <% for transaction in @transactions %>
   <div class="transaction--box">

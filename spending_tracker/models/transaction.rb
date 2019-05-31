@@ -68,7 +68,6 @@ class Transaction
     sql = 'SELECT * FROM transactions'
     result = SqlRunner.run(sql)
     return self.map_items(result)
-    # return result.map{ |item| Transaction.new(item) }
   end
 
   def self.delete_all
@@ -86,6 +85,19 @@ class Transaction
   def self.map_items(data)
     result = data.map { |data| Transaction.new( data ) }
     return result
+  end
+
+  def self.sort()
+    sql = 'SELECT * FROM transactions ORDER BY time_stamp'
+    result = SqlRunner.run(sql)
+    return self.map_items(result)
+  end
+
+  def self.filter_tag(tag_id)
+    sql = 'SELECT * FROM transactions WHERE tag_id = $1'
+    values = [tag_id]
+    result = SqlRunner.run(sql, values)
+    return self.map_items(result)
   end
 
 

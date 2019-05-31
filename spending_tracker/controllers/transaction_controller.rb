@@ -1,5 +1,6 @@
 require('sinatra')
 require('sinatra/contrib/all')
+require('pry')
 
 require_relative('../models/transaction')
 require_relative('../models/merchant')
@@ -10,6 +11,8 @@ also_reload( '../models/*' )
 get '/transactions' do
   @transactions = Transaction.all
   @transaction_total = Transaction.total_transaction_amount
+  @merchants = Merchant.all
+  @tags = Tag.all
   erb(:'transactions/index')
 end
 
@@ -24,4 +27,28 @@ post '/transactions' do
   transaction = Transaction.new(params)
   transaction.save
   redirect('/transactions')
+end
+
+post '/transactions/sort' do
+  @transactions = Transaction.sort
+  @transaction_total = Transaction.total_transaction_amount
+  erb(:'transactions/sort')
+end
+
+post '/transactions/filter_tag' do
+  # @number = params['tag_id']
+  if params['tag_id'].to_i > 0
+    @transactions = Transaction.filter_tag(params['tag_id'])
+  else
+    @transactions = Transaction.all
+  end
+  @transaction_total = Transaction.total_transaction_amount
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:'transactions/index')
+end
+
+post '/transactions/filter_merchant' do
+  # @transactions = Transaction.filter
+
 end
