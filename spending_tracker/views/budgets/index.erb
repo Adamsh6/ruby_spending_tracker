@@ -1,3 +1,6 @@
 <h2>Current Budget</h2>
+<% if @latest_budget.almost_over? %>
+<p> Warning, you have almost reached your budget!</p>
+<% end %>
 <p>For <%= @latest_budget.pretty_month %></p>
 <p><%= @latest_budget.amount %></p>

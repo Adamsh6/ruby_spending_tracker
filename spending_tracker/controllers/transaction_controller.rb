@@ -29,10 +29,12 @@ post '/transactions' do
   redirect('/transactions')
 end
 
-post '/transactions/sort' do
+get '/transactions/sort' do
   @transactions = Transaction.sort
   @transaction_total = Transaction.total_transaction_amount
-  erb(:'transactions/sort')
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:'transactions/index')
 end
 
 post '/transactions/filter_tag' do
