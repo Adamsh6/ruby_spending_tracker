@@ -22,3 +22,13 @@ post '/merchants_and_tags/new_tag' do
   tag.save
   redirect('merchants_and_tags')
 end
+
+get '/merchants_and_tags/tag/:id' do
+
+  erb(:'merchants_and_tags/tag')
+end
+
+get '/merchants_and_tags/merchant/:id' do
+
+  erb(:'merchants_and_tags/merchant')
+end
