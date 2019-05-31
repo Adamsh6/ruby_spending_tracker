@@ -47,6 +47,12 @@ class Budget
     return total_spent
   end
 
+  def pretty_month
+    date = @start_date
+    current_month = "#{date.slice(5, 2)}/#{date.slice(0, 4)}"
+    return current_month
+  end
+
   def almost_over?
     total_spent = spent_this_month
     budget_left = @amount - total_spent
