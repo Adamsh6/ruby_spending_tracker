@@ -11,7 +11,7 @@
   <div class="merchants--box">
     <p><%= merchant.name %></p>
     <button type="button">
-      <a href="/merchants_and_tags/merchant/1">Edit</a>
+      <a href="/merchants_and_tags/merchant/<%= merchant.id %>">Edit</a>
     </button>
   </div>
   <% end %>
@@ -29,6 +29,9 @@
   <% for tag in @tags %>
   <div class="tags--box">
     <p><%= tag.name %></p>
+    <button type="button">
+      <a href="/merchants_and_tags/tag/<%= tag.id %>">Edit</a>
+    </button>
   </div>
   <% end %>
 

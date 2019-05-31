@@ -1,0 +1,22 @@
+<p>Create a new transaction here</p>
+
+<form class="transactions--new" action="/transactions" method="post">
+<label for="amount">Amount: </label>
+<input id="amount" type="number" step="0.01" min="0.01" name="amount">
+<label for="merchants">Merchant: </label>
+<select name="merchant_id" id="merchants">
+  <% for merchant in @merchants %>
+  <option value="<%= merchant.id %>"><%= merchant.name %></option>
+  <% end %>
+</select>
+<label for="tags">Tag:</label>
+<select name="tag_id" id="tags">
+  <% for tag in @tags %>
+  <option value="<%= tag.id %>"><%= tag.name %></option>
+  <% end %>
+</select>
+<label for="date">Start date:</label>
+
+<input type="date" id="start" name="time_stamp">
+<input type="submit" value="Add transaction">
+</form>

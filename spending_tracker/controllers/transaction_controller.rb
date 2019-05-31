@@ -12,3 +12,16 @@ get '/transactions' do
   @transaction_total = Transaction.total_transaction_amount
   erb(:'transactions/index')
 end
+
+get '/transactions/new' do
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:'transactions/new')
+end
+
+post '/transactions' do
+  params['budget_id'] = Budget.last_budget.id
+  transaction = Transaction.new(params)
+  transaction.save
+  redirect('/transactions')
+end

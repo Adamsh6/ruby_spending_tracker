@@ -86,5 +86,9 @@ class Budget
     return result
   end
 
+  def self.last_budget
+    return self.all.last
+  end
+
 
 end
