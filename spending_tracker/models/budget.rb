@@ -69,8 +69,7 @@ class Budget
 
   def go_over?(amount)
     total_spent = spent_this_month
-    return false if total_spent > @amount
-    return true if (total_spent + amount) > @amount
+    return true if (total_spent + amount) > @amount && total_spent < @amount
     return false
   end
 

@@ -7,7 +7,7 @@ also_reload( '../models/*' )
 
 get '/budget' do
   @latest_budget = Budget.last_budget
-  # @total_spent = Transaction.total_transaction_amount
+  @total_spent = Transaction.total_transaction_amount
   erb ( :"budgets/index" )
 end
 
