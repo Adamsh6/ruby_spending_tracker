@@ -30,6 +30,9 @@
     <p><%= transaction.time_stamp %></p>
     <p><%= transaction.merchant.name %> : <%= transaction.tag.name %></p>
     <p><%= transaction.amount %></p>
+    <form class="delete" action="transactions/<%= transaction.id %>/delete" method="post">
+      <input type="submit" value="Remove Transaction">
+    </form>
   </div>
   <% end %>
 </div>

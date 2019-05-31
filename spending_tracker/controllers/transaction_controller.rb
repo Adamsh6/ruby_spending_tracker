@@ -29,6 +29,12 @@ post '/transactions' do
   redirect('/transactions')
 end
 
+post '/transactions/:id/delete' do
+  transaction = Transaction.find(params['id'])
+  transaction.delete
+  redirect('/transactions')
+end
+
 get '/transactions/sort' do
   @transactions = Transaction.sort
   @transaction_total = Transaction.total_transaction_amount
@@ -60,5 +66,4 @@ post '/transactions/filter_merchant' do
   @merchants = Merchant.all
   @tags = Tag.all
   erb(:'transactions/index')
-
 end

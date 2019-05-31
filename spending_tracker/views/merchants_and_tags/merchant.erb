@@ -5,6 +5,6 @@
   <input type="submit" value="Edit">
 </form>
 <form action="/merchants_and_tags/merchant/<%= @merchant.id %>/delete" method="POST">
-  <label for="delete">Warning, deleting this merchant may remove transactions from your tracker!</label>
+  <label for="delete">Warning, deleting this merchant will remove related transactions from your tracker!</label>
 <input id="delete" type="submit" value="delete" />
 </form>

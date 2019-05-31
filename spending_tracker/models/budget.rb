@@ -53,6 +53,12 @@ class Budget
     return current_month
   end
 
+  def over?
+    total_spent = spent_this_month
+    return true if total_spent >= @amount
+    return false
+  end
+
   def almost_over?
     total_spent = spent_this_month
     budget_left = @amount - total_spent
