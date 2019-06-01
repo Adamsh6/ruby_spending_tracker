@@ -27,6 +27,15 @@
   <input type="submit" value="Filter">
 </form>
 
+<form action="/transactions/filter_month" method="get">
+  <select name="month" id="month">
+    <% for month in @months %>
+    <option value="<%= month %>"><%= month %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Filter month" />
+  </form>
+
 <div class="transaction--container">
   <% for transaction in @transactions %>
   <div class="transaction--box">

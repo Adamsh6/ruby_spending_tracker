@@ -7,6 +7,7 @@ require_relative('../models/transaction')
 require_relative('../models/merchant')
 require_relative('../models/tag')
 require_relative('../models/budget')
+require_relative('../models/date_handler')
 also_reload( '../models/*' )
 
 get '/transactions' do
@@ -14,6 +15,7 @@ get '/transactions' do
   @transaction_total = Transaction.total_transaction_amount
   @merchants = Merchant.all
   @tags = Tag.all
+  @months = DateHandler.last_six_months
   erb(:'transactions/index')
 end
 
@@ -44,6 +46,7 @@ get '/transactions/sort' do
   @transaction_total = Transaction.total_transaction_amount
   @merchants = Merchant.all
   @tags = Tag.all
+  @months = DateHandler.last_six_months
   erb(:'transactions/index')
 end
 
@@ -52,6 +55,7 @@ get '/transactions/sort_by_amount' do
   @transaction_total = Transaction.total_transaction_amount
   @merchants = Merchant.all
   @tags = Tag.all
+  @months = DateHandler.last_six_months
   erb(:'transactions/index')
 end
 
@@ -60,5 +64,15 @@ post '/transactions/filter' do
   @transaction_total = Transaction.total_transaction_amount(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
+  @months = DateHandler.last_six_months
+  erb(:'/transactions/index')
+end
+
+get '/transactions/filter_month' do
+  @transactions = Transaction.filter_month(params['month'])
+  @transaction_total = Transaction.total_transaction_amount(@transactions)
+  @merchants = Merchant.all
+  @tags = Tag.all
+  @months = DateHandler.last_six_months
   erb(:'/transactions/index')
 end
