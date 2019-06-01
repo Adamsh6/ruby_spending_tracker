@@ -24,6 +24,14 @@
   <input type="submit" value="Filter by tag">
 </form>
 
+<form action="/transactions/filter_amount" method="post">
+  <label for="lower">Lower Limit</label>
+  <input id="lower" type="number" step="1" min="0" name="lower" value="0" required>
+  <label for="upper">Upper Limit</label>
+  <input id="upper" type="number" step="1" min="1" name="upper" value="1000" required>
+  <input type="submit" value="Filter by amount">
+</form>
+
 <div class="transaction--container">
   <% for transaction in @transactions %>
   <div class="transaction--box">

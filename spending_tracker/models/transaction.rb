@@ -18,14 +18,14 @@ class Transaction
   end
 
   def save
-    sql = 'INSERT INTO transactions (amount, time_stamp, merchant_id, tag_id) VALUES ($1, $2, $3, $4, $5) RETURNING id'
+    sql = 'INSERT INTO transactions (amount, time_stamp, merchant_id, tag_id) VALUES ($1, $2, $3, $4) RETURNING id'
     values = [@amount, @time_stamp, @merchant_id, @tag_id]
     result = SqlRunner.run(sql, values)
     @id = result.first["id"].to_i
   end
 
   def update
-    sql = 'UPDATE transactions SET (amount, time_stamp, merchant_id, tag_id) = ($1, $2, $3, $4, $5) WHERE id = $6'
+    sql = 'UPDATE transactions SET (amount, time_stamp, merchant_id, tag_id) = ($1, $2, $3, $4) WHERE id = $5'
     values = [@amount, @time_stamp, @merchant_id, @tag_id, @id]
     SqlRunner.run(sql, values)
   end
@@ -95,6 +95,13 @@ class Transaction
   def self.filter_merchant(merchant_id)
     sql = 'SELECT * FROM transactions WHERE merchant_id = $1'
     values = [merchant_id]
+    result = SqlRunner.run(sql, values)
+    return self.map_items(result)
+  end
+
+  def self.filter_amount(lower_limit, upper_limit)
+    sql = 'SELECT * FROM transactions WHERE amount BETWEEN SYMMETRIC $1 AND $2'
+    values = [lower_limit.to_i, upper_limit.to_i]
     result = SqlRunner.run(sql, values)
     return self.map_items(result)
   end

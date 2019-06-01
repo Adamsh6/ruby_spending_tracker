@@ -71,3 +71,11 @@ post '/transactions/filter_merchant' do
   @tags = Tag.all
   erb(:'transactions/index')
 end
+
+post '/transactions/filter_amount' do
+  @transactions = Transaction.filter_amount(params['lower'], params['upper'])
+  @transaction_total = Transaction.total_transaction_amount
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:'transactions/index')
+end
