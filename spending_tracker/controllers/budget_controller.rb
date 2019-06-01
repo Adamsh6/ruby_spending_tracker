@@ -18,7 +18,15 @@ end
 
 post '/budget' do
   @latest_budget = Budget.last_budget
-  @latest_budget.amount = params['amount']
-  @latest_budget.update
+  date_today = Date.today.strftime('%F')
+  date_today_compact = Date.today.strftime('%Y-%m')
+  if DateHandler.compare_month(date_today_compact, @latest_budget.start_date) == 1
+    params['start_date'] = date_today
+    @latest_budget = Budget.new(params)
+    @latest_budget.save
+  else
+    @latest_budget.amount = params['amount']
+    @latest_budget.update
+  end
   redirect('/budget')
 end

@@ -98,7 +98,6 @@ class Transaction
     result = SqlRunner.run(sql, values)
     return self.map_items(result)
   end
-
   def self.filter_amount(lower_limit, upper_limit)
     sql = 'SELECT * FROM transactions WHERE amount BETWEEN SYMMETRIC $1 AND $2'
     values = [lower_limit.to_i, upper_limit.to_i]
@@ -133,16 +132,9 @@ class Transaction
       sql += tag_string + placeholder3
       values << filter_options['tag_id']
     end
-
     result = SqlRunner.run(sql, values)
     return self.map_items(result)
   end
-
-
-
-
-
-
 
   def self.last_six_months_amounts
     months = DateHandler.last_six_months

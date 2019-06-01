@@ -30,13 +30,13 @@ transaction1.save
 
 budget2 = Budget.new({'amount' => 1000.00, 'start_date' => '2018-12-29'});
 budget3 = Budget.new({'amount' => 789.00, 'start_date' => '2019-02-17'});
-budget4 = Budget.new({'amount' => 999.00, 'start_date' => '2019-05-21'});
-budget5 = Budget.new({'amount' => 671.33, 'start_date' => '2019-06-01'});
+# budget4 = Budget.new({'amount' => 999.00, 'start_date' => '2019-05-21'});
+# budget5 = Budget.new({'amount' => 671.33, 'start_date' => '2019-06-01'});
 
 budget2.save
 budget3.save
-budget4.save
-budget5.save
+# budget4.save
+# budget5.save
 
 
 Budget.last_six_months

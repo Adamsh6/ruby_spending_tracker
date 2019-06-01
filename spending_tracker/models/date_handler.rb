@@ -18,6 +18,14 @@ class DateHandler
     return month_array
   end
 
+  def self.date_today_short
+    date_today_compact = Date.today.strftime('%Y-%m')
+  end
+
+  def self.date_today_long
+    date_today = Date.today.strftime('%F')
+  end
+
   #Returns 1 if first month is more recent than second
   #Returns 0 if months are equivalent
   #Returns -1 if first month is less recent than second
