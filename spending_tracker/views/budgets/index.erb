@@ -20,6 +20,19 @@
  <th>Difference</th>
     </tr>
   <% for i in 0..5 %>
-  
-
+  <tr>
+    <td>
+    <%= @months[i] %>
+  </td>
+  <td>
+    <%= @budgets[i].amount %>
+  </td>
+  <td>
+    <%= @total_transactions[i] %>
+  </td>
+  <td>
+    <%= @budgets[i].amount -  @total_transactions[i] %>
+  </td>
+  </tr>
+  <% end %>
 </table>
