@@ -4,32 +4,26 @@
   <input type="submit" value="Sort by date">
 </form>
 
-<form action="/transactions/filter_merchant" method="post">
+<form action="/transactions/filter" method="post">
   <select name="merchant_id" id="merchants">
     <option value=0>All</option>
     <% for merchant in @merchants %>
     <option value="<%= merchant.id %>"><%= merchant.name %></option>
     <% end %>
   </select>
-  <input type="submit" value="Filter by merchant">
-</form>
 
-<form action="/transactions/filter_tag" method="post">
   <select name="tag_id" id="tags">
     <option value=0>All</option>
     <% for tag in @tags %>
     <option value="<%= tag.id %>"><%= tag.name %></option>
     <% end %>
   </select>
-  <input type="submit" value="Filter by tag">
-</form>
 
-<form action="/transactions/filter_amount" method="post">
   <label for="lower">Lower Limit</label>
   <input id="lower" type="number" step="1" min="0" name="lower" value="0" required>
   <label for="upper">Upper Limit</label>
   <input id="upper" type="number" step="1" min="1" name="upper" value="1000" required>
-  <input type="submit" value="Filter by amount">
+  <input type="submit" value="Filter">
 </form>
 
 <div class="transaction--container">

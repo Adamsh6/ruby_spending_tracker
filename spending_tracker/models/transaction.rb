@@ -115,6 +115,35 @@ class Transaction
     return self.map_items(result)
   end
 
+  def self.filter(filter_options)
+    sql = "SELECT * FROM transactions WHERE amount BETWEEN SYMMETRIC $1 AND $2"
+      merchant_string = ' AND merchant_id = $3'
+      tag_string = ' AND tag_id = '
+    placeholder3 = "$3"
+    placeholder4 = "$4"
+    values = [filter_options['lower'], filter_options['upper']]
+    if filter_options['merchant_id'].to_i > 0 && filter_options['tag_id'].to_i > 0
+      sql += merchant_string + tag_string + placeholder4
+      values << filter_options['merchant_id']
+      values << filter_options['tag_id']
+    elsif filter_options['merchant_id'].to_i > 0
+      sql += merchant_string
+      values << filter_options['merchant_id']
+    elsif filter_options['tag_id'].to_i > 0
+      sql += tag_string + placeholder3
+      values << filter_options['tag_id']
+    end
+
+    result = SqlRunner.run(sql, values)
+    return self.map_items(result)
+  end
+
+
+
+
+
+
+
   def self.last_six_months_amounts
     months = DateHandler.last_six_months
     amount_array = []

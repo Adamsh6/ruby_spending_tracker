@@ -47,35 +47,10 @@ get '/transactions/sort' do
   erb(:'transactions/index')
 end
 
-post '/transactions/filter_tag' do
-  # @number = params['tag_id']
-  if params['tag_id'].to_i > 0
-    @transactions = Transaction.filter_tag(params['tag_id'])
-  else
-    @transactions = Transaction.all
-  end
-  @transaction_total = Transaction.total_transaction_amount
+post '/transactions/filter' do
+  @transactions = Transaction.filter(params)
+  @transaction_total = Transaction.total_transaction_amount(@transactions)
   @merchants = Merchant.all
   @tags = Tag.all
-  erb(:'transactions/index')
-end
-
-post '/transactions/filter_merchant' do
-  if params['merchant_id'].to_i > 0
-    @transactions = Transaction.filter_merchant(params['merchant_id'])
-  else
-    @transactions = Transaction.all
-  end
-  @transaction_total = Transaction.total_transaction_amount
-  @merchants = Merchant.all
-  @tags = Tag.all
-  erb(:'transactions/index')
-end
-
-post '/transactions/filter_amount' do
-  @transactions = Transaction.filter_amount(params['lower'], params['upper'])
-  @transaction_total = Transaction.total_transaction_amount
-  @merchants = Merchant.all
-  @tags = Tag.all
-  erb(:'transactions/index')
+  erb(:'/transactions/index')
 end
