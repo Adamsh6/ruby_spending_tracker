@@ -12,3 +12,15 @@ li {
   list-style: none;
   margin: 0 1em;
 }
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.orange {
+  color: orange;
+}
