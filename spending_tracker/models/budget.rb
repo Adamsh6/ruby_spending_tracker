@@ -73,6 +73,28 @@ class Budget
     return false
   end
 
+  def last_six_months
+    # months_array = DateHandler.last_six_months
+    months_array = []
+    # Array of budget objects, starting from the latest
+    budgets = self.all.reverse
+    budget_iterator = 0
+    budget_array = []
+    for month in months_array
+      case DateHandler.compare_month(month, @start_date)
+      when 1
+        budget_array << budgets[0]
+      when 0
+        budget_array << budgets[0]
+        budget_iterator += 1
+      else
+        raise "Month parsing error"
+      end
+    end
+
+
+  end
+
   def self.find(id)
     sql = 'SELECT * FROM budgets WHERE id = $1'
     values = [id]
