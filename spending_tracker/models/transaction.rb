@@ -14,7 +14,6 @@ class Transaction
     @time_stamp = options['time_stamp']
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
-
   end
 
   def save

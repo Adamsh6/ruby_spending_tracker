@@ -1,8 +1,25 @@
+body {
+  margin: inherit, 0.1em;
+}
+
+header {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+header, nav {
+  font-family: 'Dosis', sans-serif;
+}
+
 main {
   /* display: flex; */
   justify-content: center;
 }
 
+h1 {
+  margin: 0;
+}
 
 
 
