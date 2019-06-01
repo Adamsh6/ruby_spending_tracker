@@ -34,13 +34,6 @@ class Budget
     SqlRunner.run(sql, values)
   end
 
-  def transactions
-    sql = "SELECT * FROM transactions WHERE budget_id = $1"
-    values = [@id]
-    result = SqlRunner.run(sql, values)
-    return result.map{ |details| Transaction.new(details)}
-  end
-
   def spent_this_month
     transactions_made = transactions
     total_spent = 0.0

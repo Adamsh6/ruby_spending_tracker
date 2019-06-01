@@ -15,17 +15,17 @@ merchant1 = Merchant.new({'name' => 'Amazon'})
 
 tag1 = Tag.new({'name' => 'Groceries'})
 
-transaction1 = Transaction.new({
-  'amount' => 38.5,
-  'budget_id' => 1,
-  'tag_id' => 1,
-  'merchant_id' => 1,
-  'time_stamp' => '2019-05-01'
-  })
-
 budget1.save
 merchant1.save
 tag1.save
+
+transaction1 = Transaction.new({
+  'amount' => 38.5,
+  'tag_id' => tag1.id,
+  'merchant_id' => merchant1.id,
+  'time_stamp' => '2019-05-01'
+  })
+
 transaction1.save
 
 budget2 = Budget.new({'amount' => 1000.00, 'start_date' => '2018-12-29'});

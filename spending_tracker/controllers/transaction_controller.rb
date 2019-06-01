@@ -28,7 +28,6 @@ get '/transactions/new' do
 end
 
 post '/transactions' do
-  params['budget_id'] = Budget.last_budget.id
   transaction = Transaction.new(params)
   transaction.save
   redirect('/transactions')
