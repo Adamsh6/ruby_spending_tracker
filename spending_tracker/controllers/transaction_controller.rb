@@ -47,6 +47,14 @@ get '/transactions/sort' do
   erb(:'transactions/index')
 end
 
+get '/transactions/sort_by_amount' do
+  @transactions = Transaction.sort_by_amount
+  @transaction_total = Transaction.total_transaction_amount
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:'transactions/index')
+end
+
 post '/transactions/filter' do
   @transactions = Transaction.filter(params)
   @transaction_total = Transaction.total_transaction_amount(@transactions)

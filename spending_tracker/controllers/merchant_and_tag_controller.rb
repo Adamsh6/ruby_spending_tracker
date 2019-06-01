@@ -19,9 +19,7 @@ post '/merchants_and_tags/new_merchant' do
 end
 
 post '/merchants_and_tags/new_tag' do
-  params['color'] = '#999'
   tag = Tag.new(params)
-  # binding.pry
   tag.save
   redirect('merchants_and_tags')
 end
@@ -37,7 +35,6 @@ get '/merchants_and_tags/merchant/:id' do
 end
 
 post '/merchants_and_tags/tag/:id' do
-  # params['color'] = '#411'
   tag = Tag.new(params)
   tag.update
   redirect('/merchants_and_tags')

@@ -79,11 +79,19 @@ class Transaction
     return result
   end
 
+  #sort_all
   def self.sort()
     sql = 'SELECT * FROM transactions ORDER BY time_stamp'
     result = SqlRunner.run(sql)
     return self.map_items(result)
   end
+
+  def self.sort_by_amount()
+    sql = 'SELECT * FROM transactions ORDER BY amount DESC'
+    result = SqlRunner.run(sql)
+    return self.map_items(result)
+  end
+
 
   def self.filter_tag(tag_id)
     sql = 'SELECT * FROM transactions WHERE tag_id = $1'
