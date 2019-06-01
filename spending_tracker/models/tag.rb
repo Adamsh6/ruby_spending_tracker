@@ -4,7 +4,7 @@ require_relative('../db/sql_runner')
 
 class Tag
 
-  attr_accessor :name
+  attr_accessor :name, :color
   attr_reader :id
 
   def initialize(options)
@@ -21,7 +21,7 @@ class Tag
   end
 
   def update
-    sql = 'UPDATE tags SET (name, color) = ($1, $2) WHERE id = $2'
+    sql = 'UPDATE tags SET (name, color) = ($1, $2) WHERE id = $3'
     values = [@name, @color, @id]
     SqlRunner.run(sql, values)
   end

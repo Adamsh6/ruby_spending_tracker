@@ -3,6 +3,12 @@
 <form class="tag--edit" action="/merchants_and_tags/tag/<%= @tag.id %>" method="post">
   <label for="tag">Tag: </label>
   <input type="text" id="tag" name="name" value="<%= @tag.name %>" required>
+  <!-- <select name="color">
+    <option class='red' value="red">Red</option>
+    <option class='blue' value="blue">Blue</option>
+    <option class='green' value="green">Green</option>
+  </select> -->
+  <input name="color" type="color" value="<%= @tag.color %>">
   <input type="submit" value="Edit">
 </form>
 <form action="/merchants_and_tags/tag/<%= @tag.id %>/delete" method="POST">

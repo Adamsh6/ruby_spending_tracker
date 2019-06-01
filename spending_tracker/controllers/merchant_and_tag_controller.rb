@@ -37,7 +37,7 @@ get '/merchants_and_tags/merchant/:id' do
 end
 
 post '/merchants_and_tags/tag/:id' do
-  params['color'] = '#411'
+  # params['color'] = '#411'
   tag = Tag.new(params)
   tag.update
   redirect('/merchants_and_tags')
