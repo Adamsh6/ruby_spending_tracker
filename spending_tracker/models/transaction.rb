@@ -115,4 +115,14 @@ class Transaction
     result = SqlRunner.run(sql, values)
     return self.map_items(result)
   end
+
+  def self.last_six_months_amounts
+    months = DateHandler.last_six_months
+    amount_array = []
+    for month in months
+      transactions = self.filter_month(month)
+      amount_array << transactions.sum{|transaction| transaction.amount}
+    end
+    return amount_array
+  end
 end
