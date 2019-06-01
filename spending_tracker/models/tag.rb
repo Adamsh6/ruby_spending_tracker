@@ -10,19 +10,19 @@ class Tag
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
-
+    @color = options['color']
   end
 
   def save
-    sql = 'INSERT INTO tags (name) VALUES ($1) RETURNING id'
-    values = [@name]
+    sql = 'INSERT INTO tags (name, color) VALUES ($1, $2) RETURNING id'
+    values = [@name, @color]
     result = SqlRunner.run(sql, values)
     @id = result.first["id"].to_i
   end
 
   def update
-    sql = 'UPDATE tags SET name = $1 WHERE id = $2'
-    values = [@name, @id]
+    sql = 'UPDATE tags SET (name, color) = ($1, $2) WHERE id = $2'
+    values = [@name, @color, @id]
     SqlRunner.run(sql, values)
   end
 

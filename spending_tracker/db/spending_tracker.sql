@@ -12,7 +12,8 @@ CREATE TABLE budgets (
 
 CREATE TABLE tags (
   id SERIAL8 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  color VARCHAR(255)
 );
 
 CREATE TABLE merchants (

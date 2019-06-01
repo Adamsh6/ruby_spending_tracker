@@ -13,7 +13,7 @@ budget1 = Budget.new({'amount' => 377.01, 'start_date' => '2018-10-01'});
 
 merchant1 = Merchant.new({'name' => 'Amazon'})
 
-tag1 = Tag.new({'name' => 'Groceries'})
+tag1 = Tag.new({'name' => 'Groceries', 'Color' => '#476'})
 
 budget1.save
 merchant1.save
