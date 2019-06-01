@@ -35,7 +35,7 @@ class Budget
   end
 
   def spent_this_month
-    transactions_made = transactions
+    transactions_made = Transaction.filter_month(@start_date.slice(0,7))
     total_spent = 0.0
     transactions_made.each{|transaction| total_spent += transaction.amount}
     return total_spent
