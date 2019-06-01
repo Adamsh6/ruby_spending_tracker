@@ -9,6 +9,7 @@ also_reload( '../models/*' )
 get '/budget' do
   @latest_budget = Budget.last_budget
   @total_spent = Transaction.total_transaction_amount
+  @date_today_compact = Date.today.strftime('%Y-%m')
 
   @budgets = Budget.last_six_months
   @total_transactions = Transaction.last_six_months_amounts

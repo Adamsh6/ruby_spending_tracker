@@ -4,7 +4,7 @@
 <% elsif @latest_budget.almost_over? %>
 <p> Warning, you have almost reached your budget!</p>
 <% end %>
-<p>For <%= @latest_budget.pretty_month %></p>
+<p>For <%= @date_today_compact %></p>
 <p>Budget: <%= @latest_budget.amount %></p>
 <p>Money spent: <%= @total_spent %></p>
 <form action="/budget" method="post">
