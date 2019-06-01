@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/merchants_and_tags.css">
+  <title>Coin-Grabber</title>
+</head>
+<body>
+  <header>
+    <h1>COIN-GRABBER</h1>
+  </header>
   <nav>
     <ul>
-    <li><a href="/budget">Current Budget</a></li>
-    <li><a href="/transactions">Transactions</a></li>
-    <li><a href="/merchants_and_tags">Merchants and Tags</a></li>
-    <li><a href="/transactions/new">Add a Transaction</a></li>
+      <li><a href="/budget">Current Budget</a></li>
+      <li><a href="/transactions">Transactions</a></li>
+      <li><a href="/merchants_and_tags">Merchants and Tags</a></li>
+      <li><a href="/transactions/new">Add a Transaction</a></li>
     </ul>
-    </nav>
-  <body>
+  </nav>
+
+  <main>
     <%= yield %>
-  </body>
+  </main>
+</body>
 </html>
