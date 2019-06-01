@@ -1,5 +1,6 @@
 require('pg')
 require("pry")
+require_relative('date_handler')
 require_relative('../db/sql_runner')
 
 class Transaction
@@ -10,10 +11,10 @@ class Transaction
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @amount = options['amount'].to_f
-@time_stamp = options['time_stamp']
-@merchant_id = options['merchant_id'].to_i
-@budget_id = options['budget_id'].to_i
-@tag_id = options['tag_id'].to_i
+    @time_stamp = options['time_stamp']
+    @merchant_id = options['merchant_id'].to_i
+    @budget_id = options['budget_id'].to_i
+    @tag_id = options['tag_id'].to_i
 
   end
 
@@ -74,11 +75,10 @@ class Transaction
     sql = "DELETE FROM transactions"
     result = SqlRunner.run(sql)
   end
-
-  def self.total_transaction_amount
-    all_transactions = self.all
+  #Takes in a transactions array, or defaults to all transactions if no argument
+  def self.total_transaction_amount(transactions=self.all)
     total_spent = 0.0
-    all_transactions.each{|transaction| total_spent += transaction.amount}
+    transactions.each{|transaction| total_spent += transaction.amount}
     return total_spent
   end
 
@@ -106,6 +106,13 @@ class Transaction
     result = SqlRunner.run(sql, values)
     return self.map_items(result)
   end
-
-
+  #Month given in YYYY-MM format
+  def self.filter_month(date)
+    sql = "SELECT * FROM transactions WHERE time_stamp BETWEEN SYMMETRIC $1 AND $2"
+    date1 = date + '-01'
+    date2 = DateHandler.add_last_day(date)
+    values = [date1, date2]
+    result = SqlRunner.run(sql, values)
+    return self.map_items(result)
+  end
 end

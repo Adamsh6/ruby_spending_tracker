@@ -39,4 +39,19 @@ class DateHandler
       return 0
     end
   end
+
+  def self.add_last_day(month)
+    day = ""
+    short_month = month.slice(5, 2)
+    case short_month
+    when '02'
+      day = "28"
+    when '01', '03', '05', '07', '08', '10', '12'
+      day = "31"
+    when '04', '06', '09', '11'
+      day = "30"
+    end
+    return month + "-" + day
+  end
+
 end

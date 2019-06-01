@@ -1,6 +1,7 @@
 require('pg')
 require("pry")
 require_relative('../db/sql_runner')
+require_relative('date_handler')
 
 class Budget
 
@@ -73,26 +74,27 @@ class Budget
     return false
   end
 
-  def last_six_months
-    # months_array = DateHandler.last_six_months
-    months_array = []
+  def self.last_six_months
+    months_array = DateHandler.last_six_months
     # Array of budget objects, starting from the latest
     budgets = self.all.reverse
-    budget_iterator = 0
+    iterator = 0
     budget_array = []
     for month in months_array
-      case DateHandler.compare_month(month, @start_date)
+              # binding.pry
+      comparitor = DateHandler.compare_month(month, budgets[iterator].start_date)
+      case comparitor
       when 1
-        budget_array << budgets[0]
+        budget_array << budgets[iterator]
+
       when 0
-        budget_array << budgets[0]
-        budget_iterator += 1
+        budget_array << budgets[iterator]
+        iterator += 1
       else
         raise "Month parsing error"
       end
     end
-
-
+    return budget_array
   end
 
   def self.find(id)
