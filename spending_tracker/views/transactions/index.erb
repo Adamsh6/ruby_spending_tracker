@@ -37,7 +37,8 @@
   <% for transaction in @transactions %>
   <div class="transaction--box">
     <p><%= transaction.time_stamp %></p>
-    <p><%= transaction.merchant.name %> :<span style="color:<%= transaction.tag.color%>;"><%= transaction.tag.name %></span></p>
+    <p><%= transaction.merchant.name %> <img src="https://www.google.com/s2/favicons?domain=www.<%= transaction.merchant.name %>.com" /> </p>
+    <p style="color:<%= transaction.tag.color%>;"><%= transaction.tag.name %></p>
     <p><%= transaction.amount %></p>
     <form class="delete" action="transactions/<%= transaction.id %>/delete" method="post">
       <input type="submit" value="Remove Transaction">
