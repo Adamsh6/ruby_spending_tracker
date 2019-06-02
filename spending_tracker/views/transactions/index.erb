@@ -1,10 +1,5 @@
 <h2>Total Spent <%= @transaction_total %></h2>
 
-<form class="sort" action="/transactions/sort" method="get">
-  <input type="submit" value="Sort by date">
-  <input type="submit" value="Sort by amount" formaction="/transactions/sort_by_amount">
-</form>
-
 <form action="/transactions/filter" method="get">
   <select name="merchant_id" id="merchants">
     <option value=0>All</option>

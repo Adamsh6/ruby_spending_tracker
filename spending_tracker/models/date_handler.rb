@@ -26,6 +26,10 @@ class DateHandler
     date_today = Date.today.strftime('%F')
   end
 
+  def self.date_six_months_ago
+    date_six_months_ago = Date.today.prev_month(6).strftime('%F')
+  end
+
   #Returns 1 if first month is more recent than second
   #Returns 0 if months are equivalent
   #Returns -1 if first month is less recent than second

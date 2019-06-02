@@ -26,6 +26,9 @@ get '/transactions/new' do
   #Should return todays date in YYYY-MM-DD Format
   @date_today = date.strftime('%F')
   @date_6_months_ago = date.prev_month(6).strftime('%F')
+
+  @date_today = DateHandler.date_today_long
+  @date_6_months_ago = DateHandler.date_six_months_ago
   erb(:'transactions/new')
 end
 
@@ -39,24 +42,6 @@ post '*/transactions/:id/delete' do
   transaction = Transaction.find(params['id'])
   transaction.delete
   redirect('/transactions')
-end
-
-get '/transactions/sort' do
-  @transactions = Transaction.sort
-  @transaction_total = Transaction.total_transaction_amount
-  @merchants = Merchant.all
-  @tags = Tag.all
-  @months = DateHandler.last_six_months
-  erb(:'transactions/index')
-end
-
-get '/transactions/sort_by_amount' do
-  @transactions = Transaction.sort_by_amount
-  @transaction_total = Transaction.total_transaction_amount
-  @merchants = Merchant.all
-  @tags = Tag.all
-  @months = DateHandler.last_six_months
-  erb(:'transactions/index')
 end
 
 get '/transactions/filter' do
