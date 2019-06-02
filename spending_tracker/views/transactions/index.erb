@@ -46,7 +46,7 @@
     <p><%= transaction.time_stamp %></p>
     <p><%= transaction.merchant.name %> :<span style="color:<%= transaction.tag.color%>;"><%= transaction.tag.name %></span></p>
     <p><%= transaction.amount %></p>
-    <form class="delete" action="<%= transaction.id %>/delete" method="post">
+    <form class="delete" action="transactions/<%= transaction.id %>/delete" method="post">
       <input type="submit" value="Remove Transaction">
     </form>
   </div>

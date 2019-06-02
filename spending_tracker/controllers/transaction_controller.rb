@@ -11,7 +11,7 @@ require_relative('../models/date_handler')
 also_reload( '../models/*' )
 
 get '/transactions' do
-  @transactions = Transaction.sort
+  @transactions = Transaction.sort if @transactions == nil
   @transaction_total = Transaction.total_transaction_amount
   @merchants = Merchant.all
   @tags = Tag.all
@@ -35,7 +35,7 @@ post '/transactions' do
   redirect('/transactions')
 end
 
-post '/transactions/:id/delete' do
+post '*/transactions/:id/delete' do
   transaction = Transaction.find(params['id'])
   transaction.delete
   redirect('/transactions')
