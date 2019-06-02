@@ -1,6 +1,8 @@
 <h2>Total Spent <%= @transaction_total %></h2>
 
 <form action="/transactions/filter" method="get">
+
+  <label for="merchant">Merchant</label>
   <select name="merchant_id" id="merchants">
     <option value=0>All</option>
     <% for merchant in @merchants %>
@@ -8,6 +10,7 @@
     <% end %>
   </select>
 
+  <label for="tag">Tag</label>
   <select name="tag_id" id="tags">
     <option value=0>All</option>
     <% for tag in @tags %>
@@ -15,19 +18,21 @@
     <% end %>
   </select>
 
+  <label for="month">Month</label>
+ <select name="month" id="month">
+   <option value="">All</option>
+   <% for month in @months %>
+   <option value="<%= month %>"><%= month %></option>
+   <% end %>
+ </select>
+
   <label for="lower">Lower Limit</label>
   <input id="lower" type="number" step="1" min="0" name="lower" value="0" required>
   <label for="upper">Upper Limit</label>
   <input id="upper" type="number" step="1" min="1" name="upper" value="1000" required>
+
   <label for="sort">Sort by most expensive?</label>
   <input type="checkbox" id="sort" name="sort" value=true>
-
-  <select name="month" id="month">
-    <option value="">All</option>
-    <% for month in @months %>
-    <option value="<%= month %>"><%= month %></option>
-    <% end %>
-  </select>
 
   <input type="submit" value="Filter">
 </form>

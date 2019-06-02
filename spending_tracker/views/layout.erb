@@ -2,9 +2,11 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/merchants_and_tags.css">
+  <link rel="stylesheet" href="/header_and_nav.css">
+  <link rel="stylesheet" href="/budget.css">
   <title>Coin-Grabber</title>
 </head>
 <body>
@@ -13,19 +15,15 @@
   </header>
   <nav>
     <ul>
-      <li><a href="/budget">Current Budget</a></li>
-      <li><a href="/transactions">Transactions</a></li>
-      <li><a href="/merchants_and_tags">Merchants and Tags</a></li>
       <li><a href="/transactions/new">Add a Transaction</a></li>
+      <li><a href="/transactions">Transactions</a></li>
+      <li><a href="/budget">Current Budget</a></li>
+      <li><a href="/merchants_and_tags">Merchants and Tags</a></li>
+
     </ul>
   </nav>
 
   <main>
-    <% if settings.latest_budget.over? %>
-    <p class="red"> You have already hit your budget this month!</p>
-    <% elsif settings.latest_budget.almost_over? %>
-    <p class="orange"> Warning, you have almost reached your budget!</p>
-    <% end %>
     <%= yield %>
   </main>
 </body>
