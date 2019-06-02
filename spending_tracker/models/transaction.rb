@@ -105,6 +105,7 @@ class Transaction
     result = SqlRunner.run(sql, values)
     return self.map_items(result)
   end
+
   def self.filter_amount(lower_limit, upper_limit)
     sql = 'SELECT * FROM transactions WHERE amount BETWEEN SYMMETRIC $1 AND $2'
     values = [lower_limit.to_i, upper_limit.to_i]
@@ -122,28 +123,31 @@ class Transaction
   end
 
   def self.filter(filter_options)
-
     sql = "SELECT * FROM transactions WHERE amount BETWEEN SYMMETRIC $1 AND $2"
-    merchant_string = ' AND merchant_id = $3'
-    tag_string = ' AND tag_id = '
-    placeholder3 = "$3"
-    placeholder4 = "$4"
-    amount_sort = " ORDER BY amount DESC"
+    merchant_sql = ' AND merchant_id = $'
+    tag_sql = ' AND tag_id = $'
+    month = filter_options['month']
+
     values = [filter_options['lower'], filter_options['upper']]
-    if filter_options['merchant_id'].to_i > 0 && filter_options['tag_id'].to_i > 0
-      sql += merchant_string + tag_string + placeholder4
+    if filter_options['merchant_id'].to_i > 0
       values << filter_options['merchant_id']
+      sql += merchant_sql + values.size.to_s
+    end
+    if filter_options['tag_id'].to_i > 0
       values << filter_options['tag_id']
-    elsif filter_options['merchant_id'].to_i > 0
-      sql += merchant_string
-      values << filter_options['merchant_id']
-    elsif filter_options['tag_id'].to_i > 0
-      sql += tag_string + placeholder3
-      values << filter_options['tag_id']
+      sql += tag_sql + values.size.to_s
+    end
+    if month != ''
+      date1 = month + '-01'
+      date2 = DateHandler.add_last_day(month)
+      values << date1
+      values << date2
+      sql += " AND time_stamp BETWEEN SYMMETRIC $#{(values.size - 1).to_s} AND $#{values.size.to_s}"
     end
     if filter_options['sort'] == "true"
-      sql += amount_sort
+      sql += " ORDER BY amount DESC"
     end
+    # binding.pry
     result = SqlRunner.run(sql, values)
     return self.map_items(result)
   end

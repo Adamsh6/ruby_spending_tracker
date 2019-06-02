@@ -52,12 +52,3 @@ get '/transactions/filter' do
   @months = DateHandler.last_six_months
   erb(:'/transactions/index')
 end
-
-get '/transactions/filter_month' do
-  @transactions = Transaction.filter_month(params['month'])
-  @transaction_total = Transaction.total_transaction_amount(@transactions)
-  @merchants = Merchant.all
-  @tags = Tag.all
-  @months = DateHandler.last_six_months
-  erb(:'/transactions/index')
-end
