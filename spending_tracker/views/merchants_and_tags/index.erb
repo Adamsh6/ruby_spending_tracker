@@ -12,7 +12,7 @@
     <% for merchant in @merchants %>
     <div class="merchantsbox">
       <p><%= merchant.name %></p>
-      <img src="https://www.google.com/s2/favicons?domain=www.<%= merchant.name %>.com" />
+      <img src="https://www.google.com/s2/favicons?domain=www.<%= merchant.name.delete(' ') %>.co.uk" />
       <button type="button">
         <a href="/merchants_and_tags/merchant/<%= merchant.id %>">Edit</a>
       </button>

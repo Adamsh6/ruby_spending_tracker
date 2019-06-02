@@ -12,8 +12,9 @@ header {
   font-size: 3em;
   letter-spacing: 0.5em;
   font-weight: bold;
-  background-image: linear-gradient(to top, #e4f4d2, #abe5c9, #66d4d3, #0ebee6, #39a0ed);
+  /* background-image: linear-gradient(to top, #e4f4d2, #abe5c9, #66d4d3, #0ebee6, #39a0ed); */
   background-image: linear-gradient(to top, #e4f4d2, #c5f1d8, #aaece6, #9be3f6, #a3d7ff);
+    background-image: linear-gradient(to top, #e4f4d290, #c5f1d890, #aaece690, #9be3f690, #a3d7ff90);
   color: #D8B800;
   background-color: #E4F4D2;
    text-shadow: 0.07em 0.05em #58355E;
@@ -25,7 +26,8 @@ header {
 
 /* Navigation Elements */
 nav {
-  padding-bottom: 0.4em;
+  padding-top: 0.4em;
+  padding-bottom: 0.8em;
   /* background-image: linear-gradient(to bottom, #e4f4d2, #abe5c9, #66d4d3, #0ebee6, #39a0ed); */
 }
 
