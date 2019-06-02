@@ -21,6 +21,11 @@
   </nav>
 
   <main>
+    <% if settings.latest_budget.over? %>
+    <p class="red"> You have already hit your budget this month!</p>
+    <% elsif settings.latest_budget.almost_over? %>
+    <p class="orange"> Warning, you have almost reached your budget!</p>
+    <% end %>
     <%= yield %>
   </main>
 </body>

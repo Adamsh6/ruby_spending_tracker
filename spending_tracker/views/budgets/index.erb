@@ -1,12 +1,6 @@
-<h2>Current Budget</h2>
-<% if @latest_budget.over? %>
-<p class="red"> You have already hit your budget this month!</p>
-<% elsif @latest_budget.almost_over? %>
-<p class="orange"> Warning, you have almost reached your budget!</p>
-<% end %>
-<p>For <%= @date_today_compact %></p>
-<p>Budget: <%= @latest_budget.amount %></p>
-<p>Money spent: <%= @total_spent %></p>
+<h2>Current Budget: <%= @latest_budget.amount %> </h2>
+<h3>for <%= @date_today_compact %> </h3>
+<p>Spent this month: <%= @total_spent %></p>
 <form action="/budget" method="post">
   <input type="number" name="amount" step="0.01" min="0.01" value="<%= @latest_budget.amount %>" required>
   <input type="submit" value="Change budget for this month">
@@ -14,6 +8,11 @@
 
 
 <table>
+  <thead>
+    <th colspan="4">
+      Last Six Months
+      </th>
+    </thead>
     <tr>
  <th>Month</th>
  <th>Budget</th>

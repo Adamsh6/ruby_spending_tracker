@@ -16,6 +16,7 @@ get '/transactions' do
   @merchants = Merchant.all
   @tags = Tag.all
   @months = DateHandler.last_six_months
+  @latest_budget = Budget.last_budget
   erb(:'transactions/index')
 end
 
@@ -50,5 +51,6 @@ get '/transactions/filter' do
   @merchants = Merchant.all
   @tags = Tag.all
   @months = DateHandler.last_six_months
+  @latest_budget = Budget.last_budget
   erb(:'/transactions/index')
 end

@@ -118,5 +118,4 @@ class Budget
     return self.all.last
   end
 
-
 end
