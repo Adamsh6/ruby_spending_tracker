@@ -80,7 +80,7 @@ class Transaction
 
   #sort_all
   def self.sort()
-    sql = 'SELECT * FROM transactions ORDER BY time_stamp'
+    sql = 'SELECT * FROM transactions ORDER BY time_stamp DESC'
     result = SqlRunner.run(sql)
     return self.map_items(result)
   end
@@ -122,11 +122,13 @@ class Transaction
   end
 
   def self.filter(filter_options)
+
     sql = "SELECT * FROM transactions WHERE amount BETWEEN SYMMETRIC $1 AND $2"
-      merchant_string = ' AND merchant_id = $3'
-      tag_string = ' AND tag_id = '
+    merchant_string = ' AND merchant_id = $3'
+    tag_string = ' AND tag_id = '
     placeholder3 = "$3"
     placeholder4 = "$4"
+    amount_sort = " ORDER BY amount DESC"
     values = [filter_options['lower'], filter_options['upper']]
     if filter_options['merchant_id'].to_i > 0 && filter_options['tag_id'].to_i > 0
       sql += merchant_string + tag_string + placeholder4
@@ -138,6 +140,9 @@ class Transaction
     elsif filter_options['tag_id'].to_i > 0
       sql += tag_string + placeholder3
       values << filter_options['tag_id']
+    end
+    if filter_options['sort'] == "true"
+      sql += amount_sort
     end
     result = SqlRunner.run(sql, values)
     return self.map_items(result)

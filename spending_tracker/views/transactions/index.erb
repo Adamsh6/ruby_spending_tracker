@@ -5,7 +5,7 @@
   <input type="submit" value="Sort by amount" formaction="/transactions/sort_by_amount">
 </form>
 
-<form action="/transactions/filter" method="post">
+<form action="/transactions/filter" method="get">
   <select name="merchant_id" id="merchants">
     <option value=0>All</option>
     <% for merchant in @merchants %>
@@ -24,7 +24,11 @@
   <input id="lower" type="number" step="1" min="0" name="lower" value="0" required>
   <label for="upper">Upper Limit</label>
   <input id="upper" type="number" step="1" min="1" name="upper" value="1000" required>
+  <label for="sort">Sort by most expensive?</label>
+  <input type="checkbox" id="sort" name="sort" value=true>
   <input type="submit" value="Filter">
+
+
 </form>
 
 <form action="/transactions/filter_month" method="get">
@@ -42,7 +46,7 @@
     <p><%= transaction.time_stamp %></p>
     <p><%= transaction.merchant.name %> :<span style="color:<%= transaction.tag.color%>;"><%= transaction.tag.name %></span></p>
     <p><%= transaction.amount %></p>
-    <form class="delete" action="transactions/<%= transaction.id %>/delete" method="post">
+    <form class="delete" action="<%= transaction.id %>/delete" method="post">
       <input type="submit" value="Remove Transaction">
     </form>
   </div>

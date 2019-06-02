@@ -11,7 +11,7 @@ require_relative('../models/date_handler')
 also_reload( '../models/*' )
 
 get '/transactions' do
-  @transactions = Transaction.all
+  @transactions = Transaction.sort
   @transaction_total = Transaction.total_transaction_amount
   @merchants = Merchant.all
   @tags = Tag.all
@@ -59,7 +59,7 @@ get '/transactions/sort_by_amount' do
   erb(:'transactions/index')
 end
 
-post '/transactions/filter' do
+get '/transactions/filter' do
   @transactions = Transaction.filter(params)
   @transaction_total = Transaction.total_transaction_amount(@transactions)
   @merchants = Merchant.all
