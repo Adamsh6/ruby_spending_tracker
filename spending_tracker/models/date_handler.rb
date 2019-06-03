@@ -66,4 +66,9 @@ class DateHandler
     return month + "-" + day
   end
 
+  def self.reverse_date(date)
+    date_object = Date.parse(date)
+    date_object.strftime('%d/%m/%y')
+  end
+
 end

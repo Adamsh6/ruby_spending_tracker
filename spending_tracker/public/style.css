@@ -23,15 +23,26 @@ time, mark, audio, video {
 
 body {
   background-color: #F4F8FF;
+  font-family: Calibri, Candara, Segoe, “Segoe UI”, Optima, Arial, sans-serif;
+
 }
 
 main {
   padding: 2em;
-
+  margin-top: 6em;
 }
 
 h1 {
   margin: 0;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+input:active {
+ background-color: #D8B800;
+ border: none;
 }
 
 

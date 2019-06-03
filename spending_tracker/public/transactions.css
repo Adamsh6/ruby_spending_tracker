@@ -1,0 +1,64 @@
+h2 .transactions{
+   font-size: 3em;
+}
+
+.transactions--form {
+
+}
+
+.transactions--form div{
+  margin: 1em auto;
+  
+}
+
+
+.transaction--container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.transaction--box {
+  border: 0.1em solid;
+  border-radius: 1em;
+  margin: 1em 0.5em;
+  padding: 1em;
+  padding-top: 0.5em;
+
+  background-color: white;
+  box-shadow: 0.2em 0.3em #D8B800;
+
+}
+
+.transaction--box p {
+  margin: 0.5em auto;
+  text-align: center;
+  font-weight: bold;
+
+  border-bottom: 0.05em dotted black;
+}
+
+.transaction--box img {
+  border: 0.07em solid #D8B800;
+}
+
+.transaction--box--color {
+  display: inline-block;
+  float: right;
+  width:100px;
+  width: 2.5em;
+  height:0.6em;
+  border: 0.05em solid;
+  border-radius: 1em;
+}
+
+#transaction--box__amount {
+  text-align: center;
+  font-weight: bold;
+  padding: 0.1em 0.2em;
+
+
+  border: 0.05em solid;
+  border-bottom-width: 0.1em;
+  border-right-width: 0.1em;
+}

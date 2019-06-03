@@ -1,8 +1,10 @@
-<h2>Total Spent <%= @transaction_total %></h2>
+<h2 class="transactions">Total Spent £<%= @transaction_total %></h2>
 
-<form action="/transactions/filter" method="get">
+<hr>
+<form class="transactions--form" action="/transactions/filter" method="get">
 
-  <label for="merchant">Merchant</label>
+<div class="transactions--form">
+  <label for="merchant">Merchant:</label>
   <select name="merchant_id" id="merchants">
     <option value=0>All</option>
     <% for merchant in @merchants %>
@@ -10,7 +12,7 @@
     <% end %>
   </select>
 
-  <label for="tag">Tag</label>
+  <label for="tag">Tag:</label>
   <select name="tag_id" id="tags">
     <option value=0>All</option>
     <% for tag in @tags %>
@@ -18,33 +20,41 @@
     <% end %>
   </select>
 
-  <label for="month">Month</label>
- <select name="month" id="month">
-   <option value="">All</option>
-   <% for month in @months %>
-   <option value="<%= month %>"><%= month %></option>
-   <% end %>
- </select>
+  <label for="month">Month:</label>
+  <select name="month" id="month">
+    <option value="">All</option>
+    <% for month in @months %>
+    <option value="<%= month %>"><%= month %></option>
+    <% end %>
+  </select>
+  </div>
 
-  <label for="lower">Lower Limit</label>
+<div class="transactions--form">
+  <label for="lower">Lower Limit: £</label>
   <input id="lower" type="number" step="1" min="0" name="lower" value="0" required>
-  <label for="upper">Upper Limit</label>
+  <label for="upper">Upper Limit: £</label>
   <input id="upper" type="number" step="1" min="1" name="upper" value="1000" required>
 
   <label for="sort">Sort by most expensive?</label>
   <input type="checkbox" id="sort" name="sort" value=true>
 
   <input type="submit" value="Filter">
+  </div>
 </form>
-
+<hr>
 
 <div class="transaction--container">
   <% for transaction in @transactions %>
   <div class="transaction--box">
-    <p><%= transaction.time_stamp %></p>
-    <p><%= (transaction.merchant.name) %> <img src="https://www.google.com/s2/favicons?domain=www.<%= transaction.merchant.name.delete(' ') %>.co.uk" /> </p>
+    <img src="https://www.google.com/s2/favicons?domain=www.<%= transaction.merchant.name.delete(' ') %>.co.uk" />
+    <div class="transaction--box--color" style="background-color:<%= transaction.tag.color%>;"> </div>
+
+    <p id="transaction--box__amount">£<%= transaction.amount.ceil(2) %></p>
+
+    <p><%= DateHandler.reverse_date(transaction.time_stamp) %></p>
+    <p><%= (transaction.merchant.name) %>  </p>
     <p style="color:<%= transaction.tag.color%>;"><%= transaction.tag.name %></p>
-    <p><%= transaction.amount %></p>
+
     <form class="delete" action="transactions/<%= transaction.id %>/delete" method="post">
       <input type="submit" value="Remove Transaction">
     </form>
