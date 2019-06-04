@@ -4,7 +4,7 @@
 <% elsif @latest_budget.almost_over? %>
 <p class="orange dosis"> Warning, you have almost reached your budget!</p>
 <% end %>
-<h2>Current Budget: £<%= @latest_budget.amount %> </h2>
+<h2>Current Budget: <em>£<%= @latest_budget.amount %></em> </h2>
 <h3>for <%= @date_today_compact %> </h3>
 <!-- <p>Spent this month: £<%= @total_spent %></p> -->
 
@@ -32,10 +32,10 @@
     <%= @months[i] %>
   </td>
   <td>
-    <%= @budgets[i].amount %>
+    £<%= @budgets[i].amount %>
   </td>
   <td>
-    <%= @total_transactions[i] %>
+    £<%= @total_transactions[i] %>
   </td>
   <% @difference = (@budgets[i].amount -  @total_transactions[i]).round(2) %>
   <% if @difference >= 0 %>
@@ -44,7 +44,7 @@
   <% @color = 'red' %>
   <% end %>
   <td class=<%= @color %>>
-    <%= @difference %>
+    £<%= @difference %>
   </td>
   </tr>
   <% end %>

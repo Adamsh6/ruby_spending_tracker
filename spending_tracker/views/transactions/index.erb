@@ -1,4 +1,4 @@
-<h2 class="transactions">Total Spent: £<%= @transaction_total %></h2>
+<h2 class="transactions">Total Spent: <em>£<%= @transaction_total %></em></h2>
 
 <hr>
 <form class="transactions--form" action="/transactions/filter" method="get">
@@ -49,7 +49,7 @@
     <img src="https://www.google.com/s2/favicons?domain=www.<%= transaction.merchant.name.delete(' ') %>.co.uk" />
     <div class="transaction--box--color" style="background-color:<%= transaction.tag.color%>;"> </div>
 
-    <p id="transaction--box__amount">£<%= transaction.amount.ceil(2) %></p>
+    <p id="transaction--box__amount">£<%= transaction.amount %></p>
 
     <p><%= DateHandler.reverse_date(transaction.time_stamp) %></p>
     <p><%= (transaction.merchant.name) %>  </p>
