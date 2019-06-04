@@ -11,12 +11,27 @@
 
 
 .merchantsbox, .tags--box {
-  border-bottom: 0.1em solid black;
+  border-bottom: 0.05em solid #D8B800;
   margin-top: 1em;
   padding-bottom: 0.5em;
-  width: 100%
+  width: 10em;
+  text-align: center;
+}
+
+.merchantsbox p{
+  margin: 0.5em auto;
+}
+
+.tags--box p{
+  margin: 0.5em auto;
 }
 
 .merchantsbox img {
-  block
+  display:inline;
+}
+
+button a{
+  color: black;
+  text-decoration: none;
+  margin: 0.5em;
 }

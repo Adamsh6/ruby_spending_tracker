@@ -74,3 +74,23 @@ h2 .transactions{
   border-bottom-width: 0.1em;
   border-right-width: 0.1em;
 }
+
+/* Styling for new transactions */
+.transactions--new {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1em;
+}
+
+.transactions--new *{
+
+}
+
+.transactions--new input{
+  margin-bottom: 1em;
+}
+
+.transactions--new select{
+  margin-bottom: 1em;
+}

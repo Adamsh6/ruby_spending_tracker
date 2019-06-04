@@ -1,8 +1,8 @@
-<p>Create a new transaction here</p>
+<h3>Create a new transaction here:</h3>
 
-<form class="transactions--new" action="/transactions" method="post">
-<label for="amount">Amount: £</label>
-<input id="amount" type="number" step="0.01" min="0.01" name="amount" required>
+<form class="transactions--new transactions--form" action="/transactions" method="post">
+<label for="amount">Amount:</label>
+<p class="amount">£<input id="amount" type="number" step="0.01" min="0.01" name="amount" required></p>
 <label for="merchants">Merchant: </label>
 <select name="merchant_id" id="merchants">
   <% for merchant in @merchants %>
