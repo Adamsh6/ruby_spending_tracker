@@ -1,0 +1,39 @@
+/* Text Stylings */
+.budget {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.budget *{
+  margin: auto;
+  margin-bottom: 0.2em;
+}
+
+
+
+/* Table stylings */
+table, th, td {
+  border: 1px solid #58355E;
+}
+
+table {
+  /* border-collapse: collapse; */
+  margin: auto;
+  border-radius: 1em;
+  border-width: 0.1em;
+  padding: 0.5em;
+}
+
+thead, th{
+  border: none;
+  font-weight: bold;
+}
+
+
+td, th{
+  padding: 0.2em 0.5em;
+  border-collapse:collapse;
+}

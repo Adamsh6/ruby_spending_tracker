@@ -1,4 +1,4 @@
-<h2 class="transactions">Total Spent £<%= @transaction_total %></h2>
+<h2 class="transactions">Total Spent: £<%= @transaction_total %></h2>
 
 <hr>
 <form class="transactions--form" action="/transactions/filter" method="get">
@@ -38,7 +38,7 @@
   <label for="sort">Sort by most expensive?</label>
   <input type="checkbox" id="sort" name="sort" value=true>
 
-  <input type="submit" value="Filter">
+  <input class="btn" type="submit" value="Filter">
   </div>
 </form>
 <hr>
@@ -56,7 +56,7 @@
     <p style="color:<%= transaction.tag.color%>;"><%= transaction.tag.name %></p>
 
     <form class="delete" action="transactions/<%= transaction.id %>/delete" method="post">
-      <input type="submit" value="Remove Transaction">
+      <input class="btn" type="submit" value="Remove Transaction">
     </form>
   </div>
   <% end %>

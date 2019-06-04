@@ -29,7 +29,7 @@ body {
 
 main {
   padding: 2em;
-  margin-top: 6em;
+  margin-top: 6.5em;
 }
 
 h1 {
@@ -38,9 +38,14 @@ h1 {
 
 h2 {
   font-size: 2.5em;
+  text-align: center;
 }
 
-input:active {
+h3{
+  font-size: 1.5em;
+}
+
+.btn:active {
  background-color: #D8B800;
  border: none;
 }
@@ -63,4 +68,8 @@ input:active {
 
 .blue {
   color: blue;
+}
+
+.dosis {
+  font-family: 'Dosis', sans-serif;
 }
