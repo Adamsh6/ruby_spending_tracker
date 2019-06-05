@@ -1,6 +1,6 @@
-<p>Edit the tags here</p>
+<h2>Edit the tags here:</h2>
 
-<form class="tag--edit" action="/merchants_and_tags/tag/<%= @tag.id %>" method="post">
+<form class="edit" action="/merchants_and_tags/tag/<%= @tag.id %>" method="post">
   <label for="tag">Tag: </label>
   <input type="text" id="tag" name="name" value="<%= @tag.name %>" required>
   <!-- <select name="color">
@@ -9,9 +9,9 @@
     <option class='green' value="green">Green</option>
   </select> -->
   <input name="color" type="color" value="<%= @tag.color %>">
-  <input type="submit" value="Edit">
+  <input class="btn" type="submit" value="Edit">
 </form>
-<form action="/merchants_and_tags/tag/<%= @tag.id %>/delete" method="POST">
-  <label for="delete">Warning, deleting this tag will remove related transactions from your tracker!</label>
-<input class="btn" id="delete" type="submit" value="delete" />
+<form class="delete" action="/merchants_and_tags/tag/<%= @tag.id %>/delete" method="POST">
+  <label class="red" for="delete">Warning, deleting this tag will remove related transactions from your tracker!</label>
+<input class="btn" id="delete" type="submit" value="Delete" />
 </form>

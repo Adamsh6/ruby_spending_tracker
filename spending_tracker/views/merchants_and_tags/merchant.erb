@@ -1,10 +1,10 @@
-<p>Edit the merchants here:</p>
-<form class="merchant--edit" action="/merchants_and_tags/merchant/<%= @merchant.id %>" method="post">
+<h2>Edit the merchants here:</h2>
+<form class="edit" action="/merchants_and_tags/merchant/<%= @merchant.id %>" method="post">
   <label for="merchant">Merchant: </label>
   <input type="text" id="merchant" name="name" value="<%= @merchant.name %>" required>
-  <input type="submit" value="Edit">
+  <input class="btn" type="submit" value="Edit">
 </form>
-<form action="/merchants_and_tags/merchant/<%= @merchant.id %>/delete" method="POST">
-  <label for="delete">Warning, deleting this merchant will remove related transactions from your tracker!</label>
-<input class="btn" id="delete" type="submit" value="delete" />
+<form class="delete" action="/merchants_and_tags/merchant/<%= @merchant.id %>/delete" method="POST">
+  <label class="red" for="delete">Warning, deleting this merchant will remove related transactions from your tracker!</label>
+<input class="btn" id="delete" type="submit" value="Delete" />
 </form>

@@ -14,8 +14,8 @@
       <p><%= merchant.name %>
       <img src="https://www.google.com/s2/favicons?domain=www.<%= merchant.name.delete(' ') %>.co.uk" />
       </p>
-      <button class="btn" type="button">
-        <a href="/merchants_and_tags/merchant/<%= merchant.id %>">Edit</a>
+      <button class="btn" type="button" onclick="/merchants_and_tags/merchant/<%= merchant.id %>">
+        Edit
       </button>
     </div>
     <% end %>
