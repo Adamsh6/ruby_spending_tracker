@@ -14,9 +14,9 @@
       <p><%= merchant.name %>
       <img src="https://www.google.com/s2/favicons?domain=www.<%= merchant.name.delete(' ') %>.co.uk" />
       </p>
-      <button class="btn" type="button" onclick="/merchants_and_tags/merchant/<%= merchant.id %>">
-        Edit
-      </button>
+      <form action="/merchants_and_tags/merchant/<%= merchant.id %>" method="get">
+        <input type="submit" name="" value="Edit">
+      </form>
     </div>
     <% end %>
   </div>
@@ -36,9 +36,9 @@
     <% for tag in @tags %>
     <div class="tags--box" style="color:<%= tag.color%>;">
       <p><%= tag.name %></p>
-      <button class="btn" type="button">
-        <a href="/merchants_and_tags/tag/<%= tag.id %>">Edit</a>
-      </button>
+      <form action="/merchants_and_tags/tag/<%= tag.id %>" method="get">
+        <input type="submit" name="" value="Edit">
+      </form>
     </div>
     <% end %>
 
