@@ -37,7 +37,7 @@ h2 .transactions{
   padding-top: 0.5em;
 
   background-color: white;
-  box-shadow: 0.2em 0.3em #D8B800;
+  box-shadow: 0.1em 0.2em 0.3em #D8B800;
 
 }
 
@@ -79,18 +79,25 @@ h2 .transactions{
 .transactions--new {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 1em;
+
 }
 
-.transactions--new *{
-
+.transactions--new p{
+  font-size: 1em;
 }
 
 .transactions--new input{
   margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+.transactions--new .amount{
+  margin-left: 1em;
 }
 
 .transactions--new select{
   margin-bottom: 1em;
+  margin-left: 1em;
 }
