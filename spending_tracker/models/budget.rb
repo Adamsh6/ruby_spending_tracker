@@ -74,12 +74,10 @@ class Budget
     iterator = 0
     budget_array = []
     for month in months_array
-              # binding.pry
       comparitor = DateHandler.compare_month(month, budgets[iterator].start_date)
       case comparitor
       when 1
         budget_array << budgets[iterator]
-
       when 0
         budget_array << budgets[iterator]
         iterator += 1
